@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Factorio",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Factorio\\bin\\x64\\factorio.exe",
+            "runtimeArgs": [],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Deploy",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/deploy.ps1",
+            "runtimeExecutable": "powershell",
+            "runtimeArgs": ["-File"],
+            "console": "integratedTerminal"
+        }
+    ]
+}
