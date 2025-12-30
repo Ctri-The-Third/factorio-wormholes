@@ -1,7 +1,18 @@
 
 function is_player_at_wormhole()
+    local player_count = table_size(get_players_at_wormhole())
+    if player_count > 0 then
+        return true
+    else
+        return false
+    end
+end 
+
+function get_players_at_wormhole()
 
     local return_value = false 
+    local return_players = {} 
+    local count_of_found_players = 1
     for _, player in pairs(game.players) do
 
         
@@ -22,6 +33,11 @@ function is_player_at_wormhole()
                 surface_string = "platform over " .. location.name
                 if location.name == "wormhole" then 
                     return_value = true
+                    if player.admin then 
+                        return_players[count_of_found_players] = player 
+                        
+                        count_of_found_players = count_of_found_players + 1 
+                    end 
                 end
             end 
         elseif surface.planet then
@@ -39,17 +55,14 @@ function is_player_at_wormhole()
         else
             admin_string = "player"
         end 
-        game.print(admin_string .. " " .. player.name .. connected_string .. " is on surface ".. surface_name .. "[".. player.physical_surface_index .. "], which is a " .. surface_string )
-
-        
-
+      
     end
-    game.print("player @ wormhole detection returns " .. tostring(return_value))
-    return return_value
+    
+    return return_players
 end 
 
 
-function surfaces_to_delete()
+function go_into_wormhole()
     -- go through each surface
       -- if it's a planet, add it to the return thingy
       -- if it's not a planet, check its location
@@ -61,7 +74,7 @@ function surfaces_to_delete()
         if surface.planet and surface.planet.name ~= "nauvis" then 
             return_list[count] = surface.name
             count = count + 1 
-            game.print("DEL " .. surface.name)
+            --game.print("DEL " .. surface.name)
             game.delete_surface(surface)
         elseif surface.planet and surface.planet.name == "nauvis" then
             local gen_settings = surface.map_gen_settings
@@ -70,24 +83,24 @@ function surfaces_to_delete()
         elseif surface.platform then 
             local platform = surface.platform 
             if not platform.hub then 
-                game.print("DEL " .. surface.name)
+                --game.print("DEL " .. surface.name)
                 game.delete_surface(surface)
             elseif not platform.space_location or  platform.space_location.name ~= "wormhole" then 
                 
                 return_list[count] = surface.name
                 count = count + 1 
-                game.print("DEL " .. platform.name .. "(".. surface.name .. ")")
+                --game.print("DEL " .. platform.name .. "(".. surface.name .. ")")
                 game.delete_surface(surface)
             else
-                game.print("KEEP" .. platform.name .. "(".. surface.name .. ")")
+                --game.print("KEEP" .. platform.name .. "(".. surface.name .. ")")
                 if platform.space_location then 
-                    game.print("  " .. platform.space_location.name) 
+                    --game.print("  " .. platform.space_location.name) 
                 else 
-                    game.print("  eh?")
+                    --game.print("  eh?")
                 end    
             end 
         else 
-            game.print("??? " .. surface.name)
+            --game.print("??? " .. surface.name)
         end
         ::continue::
     end

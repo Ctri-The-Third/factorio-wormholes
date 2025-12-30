@@ -4,6 +4,15 @@ require("data.connection-nauviswormhole")
 require("data.technology-wormholediscovery")
 require("data.ui-styles")
 
+local victory_sprite = {
+    type = "sprite",
+    name = "ngp-victory",
+    filename = "__core__/graphics/upload-chartbundle.png",
+    size = {500, 750},  
+    flags = {"gui-icon"}
+}
+data.extend{victory_sprite}
+
 local fireArmour = table.deepcopy(data.raw["armor"]["heavy-armor"])
 
 
