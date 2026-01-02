@@ -62,24 +62,65 @@ function get_players_at_wormhole()
 end 
 
 
+function get_players_not_at_wormhole() 
+    local good_players = {} 
+    local bad_players = get_players_at_wormhole()
+
+    -- iterate through each player
+        --if player name in bad_players, skip em
+
+        -- else, add em to return object
+
+    -- return good_players
+end 
+
 function go_into_wormhole()
-    -- go through each surface
-      -- if it's a planet, add it to the return thingy
-      -- if it's not a planet, check its location
-      -- if it's at the wormhole and not moving (status 6), skip
-      -- if it's not at the wormhole or is moving, add it to the return thingy.
+      
+      --any players not on a space platform at the wormhole are killed.
+
+    
+
     return_list = {}
     count = 0 
     for _, surface in pairs(game.surfaces) do
         if surface.planet and surface.planet.name ~= "nauvis" then 
             return_list[count] = surface.name
+            local gen_settings = surface.map_gen_settings
+            game.print(surface.name .. gen_settings.seed)
             count = count + 1 
             --game.print("DEL " .. surface.name)
             game.delete_surface(surface)
         elseif surface.planet and surface.planet.name == "nauvis" then
             local gen_settings = surface.map_gen_settings
-            gen_settings.seed = 0 --THIS IS WHERE YOU GOT TO
-            game.print("wormhole-attempt.lua, nauvis handling needs redone, and figure out the seeding.")
+            
+            gen_settings.seed = math.random(1, 4294967295)
+            surface.map_gen_settings = gen_settings
+
+            for chunk in surface.get_chunks() do
+                
+                surface.delete_chunk({chunk.x, chunk.y})
+                
+            end 
+
+            for _,force in pairs(game.forces) do
+                if force.name == "enemy" then
+                    force.reset_evolution()
+                end 
+                if force.name == "player" then 
+                    local map_tags = force.find_chart_tags(surface)
+                    game.print("Found ".. #map_tags .. " tags")
+                    for _, tag in pairs(map_tags) do 
+                        game.print(tag)
+                        tag.destroy()
+                    end 
+                end 
+
+
+                
+                
+            end 
+            
+            
         elseif surface.platform then 
             local platform = surface.platform 
             if not platform.hub then 

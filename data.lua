@@ -1,6 +1,6 @@
 
 require("data.spacelocation-wormhole")
-require("data.connection-nauviswormhole")
+require("data.connection-edgeofsolarsystemwormhole")
 require("data.technology-wormholediscovery")
 require("data.ui-styles")
 

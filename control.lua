@@ -2,6 +2,7 @@
 require("controls.wormhole-message")
 require("controls.wormhole-detect-and-delete")
 require("controls.ui-clicks")
+require("controls.spaceplatform-relocate")
 --control.lua
 
 
@@ -27,9 +28,11 @@ commands.add_command("sa", "reload mods", function(event)
 end )
 
 commands.add_command("wormhole", "manually trigger a wormhole event",   function(event)
-  is_player_at_wormhole()
+  relocate_from_command(event)
   end
 )
+
+
 
 script.on_event(defines.events.on_space_platform_changed_state, 
   function(event)

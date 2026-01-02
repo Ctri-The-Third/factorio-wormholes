@@ -8,9 +8,11 @@ end
 
 
 function ngp_close_button(event)
-
+    if not event.element.valid then 
+        return 
+    end 
     if event.element.name == "ngp_close_button" or event.element.name == "ngp_go_back" then 
-    
+        
         local player = game.get_player(event.player_index)
         if player.gui.screen.wormhole_main_frame then 
         player.gui.screen.wormhole_main_frame.destroy()
@@ -21,6 +23,9 @@ end
 
 
 function ngp_go_forwards(event)
+    if not event.element.valid then 
+        return 
+    end 
     if event.element.name == "ngp_go_forwards" then 
         game.print("yeet")
         local player = game.get_player(event.player_index)
