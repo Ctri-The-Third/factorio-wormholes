@@ -9,5 +9,15 @@ Date: 30. 12. 2025
     - Wormhole space location added 
     - Pathway from Solar System Edge to Womhole 
     - old surfaces & platforms now deleted/reset when enetering the Wormhole
+Version: 1.0.0
+Date: 1. 1. 2026
+  Locale:
+    - Fixed some missing strings
+  Gui:
+    - Added placeholder art for locations
+Version: 1.0.2
+Date: 2. 1. 2026
+  Info: 
+    - Embarassingly, uploaded the wrong version of the zip.
 
     
