@@ -22,7 +22,7 @@ You are welcome to explore my code to improve your own understanding.
 
 not yet published because it doesn't yet work. Will put it on the factorio mod portal when it's done :)
 
-## AI statement
+## statement on AI
 
 Generative AI was not used to create any code, graphics, or other assets.
-Howeve, Claude Code was helpful in assisting with troubleshooting for the first couple of days until I found my feet with LUA.
+However, Claude Code was helpful in assisting with troubleshooting for the first couple of days until I found my feet with LUA.

@@ -1,0 +1,13 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.1
+Date: 25. 12. 2025
+  Features: 
+    - Initial commit to github with minimal working content
+Version: 0.0.2
+Date: 30. 12. 2025
+  Major Features: 
+    - Wormhole space location added 
+    - Pathway from Solar System Edge to Womhole 
+    - old surfaces & platforms now deleted/reset when enetering the Wormhole
+
+    

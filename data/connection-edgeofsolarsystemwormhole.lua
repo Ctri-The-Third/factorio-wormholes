@@ -19,14 +19,13 @@ nauvisWormhole.icons = {
         }
     },
     {
-        icon = "__space-age__/graphics/icons/solar-system-edge.png",
+        icon = "__wormholes-new-game-plus__/graphics/icons/wormhole_64.png",
         icon_size = 64,
         scale = 0.33300000000000001,
         shift = {
         6,
         6,
         },
-        tint = {r=0,g=0.3,b=1, a=0.5}
 
         
     }

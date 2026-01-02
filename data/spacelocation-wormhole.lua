@@ -2,18 +2,18 @@ local wormhole = table.deepcopy(data.raw["space-location"]["solar-system-edge"])
 local shatteredPlanet = table.deepcopy(data.raw["space-location"]["shattered-planet"])
 
 wormhole.name="wormhole"
-wormhole.icons = {
-  {
-    icon = shatteredPlanet.icon ,
-    icon_size = wormhole.icon_size,
-    tint = {r=0,g=0.3,b=1, a=0.5}
-  }
-}
+wormhole.icon = "__wormholes-new-game-plus__/graphics/icons/wormhole_128.png"
+wormhole.icon_size = 128
+
+wormhole.starmap_icon = "__wormholes-new-game-plus__/graphics/icons/wormhole_128.png"
+wormhole.starmap_icon_size = 128
+wormhole.starmap_icon_orientation = 0 
+
 
 
 
 wormhole.draw_orbit = false
-wormhole.distance = 51
+wormhole.distance = 51.5
 wormhole.orientation = 0.245
 wormhole.magnitude = 1
 wormhole.asteroid_spawn_influence = 1 

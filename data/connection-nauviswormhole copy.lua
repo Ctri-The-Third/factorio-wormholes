@@ -19,14 +19,14 @@ nauvisWormhole.icons = {
         }
     },
     {
-        icon = "__space-age__/graphics/icons/shattered-planet.png",
-        icon_size = 64,
+        icon = "graphics/icons/wormhole_128.png",
+        icon_size = 128,
         scale = 0.33300000000000001,
         shift = {
         6,
         6,
     
-        tint = {r=0,g=0.3,b=1, a=0.5}
+        
         }
     }
     }
