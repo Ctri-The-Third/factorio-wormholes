@@ -1,7 +1,7 @@
 {
     "name": "factorio-new-game-plus",
-    "version": "0.0.0",
-    "title": "Interstellar Wormholes",
+    "version": "1.0.0",
+    "title": "Wormholes: New Game Plus",
     "author":"C'tri",
     "factorio_version": "2.0",
     "dependencies" : ["space-age"],
