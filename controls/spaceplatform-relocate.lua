@@ -31,10 +31,11 @@ function teleport_valid_platforms()
         if surface.platform and surface.platform.space_location and surface.platform.space_location.name == "wormhole" then 
             surface.platform.space_location = target_space_location
             surface.platform.paused = true 
-            game.print("teleported " .. surface.platform.name .. " to " .. target_planet_name)
+            
         end
     end 
 
+    game.print("You emerge from the wormhole above an alternate " .. target_planet_name)
 end 
 
 
