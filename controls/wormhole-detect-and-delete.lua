@@ -1,4 +1,4 @@
-
+require ("__wormholes-new-game-plus__.controls.spaceplatform-relocate")
 function is_player_at_wormhole()
     local player_count = table_size(get_players_at_wormhole())
     if player_count > 0 then
@@ -74,19 +74,15 @@ function get_players_not_at_wormhole()
     -- return good_players
 end 
 
+
+
 function go_into_wormhole()
       
       --any players not on a space platform at the wormhole are killed.
+    safety_check_safe_planet_names()
+    local safe_planet_names = storage.safe_planet_names
     
-    local safe_planet_names = {
-        nauvis = "safe",
-        vulcanus = "safe", 
-        fulgora = "safe",
-        gleba = "safe", 
-        aquilo = "safe",
-        --rubia = "unsafe",
-        maraxis = "unsafe"
-    }
+    
     return_list = {}
     count = 0 
     local unfamiliar_planets = false 
@@ -176,4 +172,23 @@ function go_into_wormhole()
         game.print("then search for the relevant planet name to see the latest. Thanks!",  {color = {255,175,100}})
     end 
 
+    
+    teleport_valid_platforms()
+
+end 
+
+--sometimes during testing, the safe_planet_names object wasn't populating - so just in case...
+function safety_check_safe_planet_names()
+    if not storage.safe_planet_names then 
+        storage.safe_planet_names = 
+        {
+            nauvis = "safe",
+            vulcanus = "safe", 
+            fulgora = "safe",
+            gleba = "safe", 
+            aquilo = "safe",
+            rubia = "unsafe",
+            maraxsis = "unsafe"
+        }
+    end
 end 

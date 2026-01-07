@@ -6,13 +6,21 @@ require("controls.spaceplatform-relocate")
 --control.lua
 
 
--- Handle GUI button clicks
+-- If you're a modder with a planet you know will work this this mod and want it to be reset
+-- use this remote with your planet's name, and pass in a boolean of true/false
 
-local state_names = {}
-for name, value in pairs(defines.space_platform_state) do
-  state_names[value] = name
-end
+remote.add_interface("wormholes-new-game-plus", {
+  register_planet = function(planet_name, safe_bool) register_planet(planet_name, safe_bool) end 
+})
 
+
+function register_planet(planet_name, safe_bool) 
+  if safe_bool then 
+    storage.safe_planet_names[planet_name] = "safe"
+  elseif not safe_bool then 
+    storage.safe_planet_names[planet_name] = "unsafe"
+  end 
+end 
 
 
 
@@ -54,3 +62,25 @@ script.on_event(defines.events.on_space_platform_changed_state,
   end   
 )
 
+local default_safe_planet_names = {
+        nauvis = "safe",
+        vulcanus = "safe", 
+        fulgora = "safe",
+        gleba = "safe", 
+        aquilo = "safe",
+        rubia = "unsafe",
+        maraxsis = "unsafe"
+    }
+
+script.on_init(
+  function (event)
+    storage.safe_planet_names = default_safe_planet_names
+  end 
+)
+script.on_configuration_changed(
+  function (event)
+    if not storage.safe_planet_names then 
+      storage.safe_planet_names = default_safe_planet_names
+    end 
+  end       
+)

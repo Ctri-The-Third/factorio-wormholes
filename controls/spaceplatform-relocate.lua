@@ -1,40 +1,42 @@
 
-
-function relocate_from_command(event)
-    local player = game.get_player(event.player_index) 
-    local surface = player.physical_surface
-
-    local platform = surface.platform
-    if not platform then 
-        return 
-    end 
-
-
-    if platform.space_location then 
-        game.print("Platform ".. platform.name .. " at ".. platform.space_location.name)
-    elseif platform.space_connection then 
-        game.print("Platform " .. platform.name .. " travelling on " .. platform.space_connection.name)
-    end 
-    relocate_space_platform(platform)
-    
-end 
-
-
-function relocate_space_platform(platform)
-    -- get the platform
-    -- move it to gleba
-    local target_planet = nil 
-    for _,planet in pairs(game.planets) do 
-        if planet.name == "gleba" then 
-            target_planet = planet 
-            game.print("found our target")
-        else 
-            game.print("planet " .. planet.name .. " is not our target")
+function teleport_valid_platforms()
+    local reset_planets_only = {} 
+    local counter = 1 
+    for planet_name, safety_bool in pairs(storage.safe_planet_names) do 
+        if safety_bool == "safe" then 
+            reset_planets_only[counter] = planet_name
+            counter = counter + 1 
         end 
     end 
 
-    platform.space_location = target_planet.prototype
-    platform.paused = true 
+    if counter == 1 then 
+        game.print("Wormhole issue: no 'safe' planets on the other end? what???")
+        return 
+    end 
+    local target_planet_index = math.random(1,counter-1)
+    
+    local target_planet_name = reset_planets_only[target_planet_index]
+    local target_space_location = nil -- game.planets[target_planet_name]
+
+    for _, planet in pairs(game.planets) do 
+        if planet.name == target_planet_name then 
+            target_space_location = planet.prototype
+        end 
+    end 
+
+    if not target_space_location then 
+        return 
+    end 
+    for _, surface in pairs(game.surfaces) do 
+        if surface.platform and surface.platform.space_location and surface.platform.space_location.name == "wormhole" then 
+            surface.platform.space_location = target_space_location
+            surface.platform.paused = true 
+            game.print("teleported " .. surface.platform.name .. " to " .. target_planet_name)
+        end
+    end 
+
 end 
+
+
 
 

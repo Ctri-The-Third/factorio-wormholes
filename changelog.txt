@@ -1,13 +1,16 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.0.4
+Version: 1.1.0
 Date: 07. 01. 2026
   Modding:
-    - Added "support" for other planet mods
-    - unfamiliar planets are skipped
-    - familiar planets we know will not crash the game are reset as before 
-    - familiar planets we know WILL crash the game if we reset them are skipped.
-    - messages in chat point the player to update their mods and check discussions if such planets are detected.
+    - Added support for other planet mods
+    - planet mods wanting to proactively integrate with us can do so using remote "wormholes-new-game-plus"."register_planet"
+    - unregistered planets are skipped
+    - registered planets we know will not crash the game are reset as before 
+    - registered planets we know WILL crash the game if we reset them are skipped.
+    - messages in chat point the player to update their mods and check discussions for if such planets are detected.
     - "Rubia" and "Maraxsis" have both been flagged as unsupported for now, possible support in future.
+  Feature: 
+    - all space platforms at the wormhole are teleported to a random planet supported by the mod. Largely a convenience feature.     
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 02. 01. 2026

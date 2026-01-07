@@ -4,7 +4,7 @@ function display_wormhole_message(player)
   local player_screen = player.gui.screen
 
   if player_screen.wormhole_main_frame then
-    game.print("Already exists!")
+    --
     return
   end
 
