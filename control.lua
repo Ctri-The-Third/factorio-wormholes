@@ -28,7 +28,8 @@ commands.add_command("sa", "reload mods", function(event)
 end )
 
 commands.add_command("wormhole", "manually trigger a wormhole event",   function(event)
-  relocate_from_command(event)
+  game.print("Debug commands are disabled.")
+  --go_into_wormhole()
   end
 )
 

@@ -27,13 +27,13 @@ function ngp_go_forwards(event)
         return 
     end 
     if event.element.name == "ngp_go_forwards" then 
-        game.print("yeet")
+        
         local player = game.get_player(event.player_index)
         if player.gui.screen.wormhole_main_frame then 
             player.gui.screen.wormhole_main_frame.destroy()
         end 
         
         go_into_wormhole()
-
+        
     end 
 end 
