@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 04. 02. 2026
+  Modding:
+    - added two new custom events, pre_wormhole_event before the process starts, and post_wormhole_event once the process is complete.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.1.2
 Date: 07. 01. 2026
   Bugfixes:

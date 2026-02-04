@@ -1,4 +1,4 @@
-
+require("controls.globals")
 require("controls.wormhole-message")
 require("controls.wormhole-detect-and-delete")
 require("controls.ui-clicks")
@@ -9,8 +9,11 @@ require("controls.spaceplatform-relocate")
 -- If you're a modder with a planet you know will work this this mod and want it to be reset
 -- use this remote with your planet's name, and pass in a boolean of true/false
 
+
 remote.add_interface("wormholes-new-game-plus", {
-  register_planet = function(planet_name, safe_bool) register_planet(planet_name, safe_bool) end 
+  register_planet = function(planet_name, safe_bool) register_planet(planet_name, safe_bool) end ,
+  get_pre_wormhole_event = function() return pre_wormhole_event end,
+  get_post_wormhole_event = function() return post_wormhole_event end 
 })
 
 

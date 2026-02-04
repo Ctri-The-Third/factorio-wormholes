@@ -1,4 +1,7 @@
 require ("__wormholes-new-game-plus__.controls.spaceplatform-relocate")
+
+
+
 function is_player_at_wormhole()
     local player_count = table_size(get_players_at_wormhole())
     if player_count > 0 then
@@ -61,6 +64,15 @@ function get_players_at_wormhole()
     return return_players
 end 
 
+function raise_pre_wormhole_event()
+    script.raise_event(pre_wormhole_event, {} )
+
+end 
+
+function raise_post_wormhole_event()
+    script.raise_event(post_wormhole_event, {} )
+end 
+
 
 function get_players_not_at_wormhole() 
     local good_players = {} 
@@ -79,6 +91,7 @@ end
 function go_into_wormhole()
       
       --any players not on a space platform at the wormhole are killed.
+    raise_pre_wormhole_event()
     safety_check_safe_planet_names()
     local safe_planet_names = storage.safe_planet_names
     
@@ -174,7 +187,7 @@ function go_into_wormhole()
 
     
     teleport_valid_platforms()
-
+    raise_post_wormhole_event()
 end 
 
 --sometimes during testing, the safe_planet_names object wasn't populating - so just in case...

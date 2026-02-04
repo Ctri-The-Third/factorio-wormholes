@@ -1,4 +1,6 @@
 
+
+
 function teleport_valid_platforms()
     local reset_planets_only = {} 
     local counter = 1 
