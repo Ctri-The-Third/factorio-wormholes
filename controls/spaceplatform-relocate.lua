@@ -2,6 +2,8 @@
 
 
 function teleport_valid_platforms()
+    -- # lets set the reset planet to "nauvis"
+    
     local reset_planets_only = {} 
     local counter = 1 
     for planet_name, safety_bool in pairs(storage.safe_planet_names) do 
@@ -18,6 +20,7 @@ function teleport_valid_platforms()
     local target_planet_index = math.random(1,counter-1)
     
     local target_planet_name = reset_planets_only[target_planet_index]
+    local target_planet_name = "nauvis"
     local target_space_location = nil -- game.planets[target_planet_name]
 
     for _, planet in pairs(game.planets) do 

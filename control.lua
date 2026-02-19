@@ -32,11 +32,6 @@ commands.add_command("re", "reload mods", function(event)
   game.print("mods reload is complete")
 end )
 
-commands.add_command("sa", "reload mods", function(event)
-  game.auto_save()
-  
-  
-end )
 
 commands.add_command("wormhole", "manually trigger a wormhole event",   function(event)
   game.print("Debug commands are disabled.")
