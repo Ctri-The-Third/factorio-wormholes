@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+Date: 24. 06. 2026
+  Info:
+    - now targets Factorio 2.1
+  Modding:
+    - the Technology resetting element ("wormholes-new-game-plus-technologies") is now a recommended dependency. That means it's enabled by default but can be turned off.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.2.0
 Date: 04. 02. 2026
   Modding:
